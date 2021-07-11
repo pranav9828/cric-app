@@ -53,7 +53,9 @@ class _HomeFragmentState extends State<HomeFragment> {
               builder: (context, snapshot) {
                 if (snapshot.data == null) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Colors.grey,
+                    ),
                   );
                 } else if (snapshot.data!.isEmpty) {
                   return Center(
@@ -96,7 +98,9 @@ class _HomeFragmentState extends State<HomeFragment> {
               builder: (context, snapshot) {
                 if (snapshot.data == null) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Colors.grey,
+                    ),
                   );
                 } else if (snapshot.data!.isEmpty) {
                   return Center(
