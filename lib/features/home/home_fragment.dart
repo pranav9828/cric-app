@@ -20,7 +20,7 @@ class _HomeFragmentState extends State<HomeFragment> {
   void initState() {
     var today = DateTime.now();
     var todayDate = today.toString().substring(0, 10);
-    matchServices.getMatches();
+    matchServices.getMatches(todayDate);
     newsService.getNews(todayDate);
     super.initState();
   }
@@ -58,9 +58,11 @@ class _HomeFragmentState extends State<HomeFragment> {
                     ),
                   );
                 } else if (snapshot.data!.isEmpty) {
-                  return Center(
-                    child: text('No Live Matches Now. Try later', Colors.white,
-                        FontWeight.w600, 17),
+                  return Container(
+                    alignment: Alignment.center,
+                    padding: setMargin(15, 15, 15, 15),
+                    child: text('No Live Matches Now. Comeback later',
+                        Colors.white, FontWeight.w600, 17),
                   );
                 } else {
                   return Container(
@@ -68,7 +70,8 @@ class _HomeFragmentState extends State<HomeFragment> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount:
+                          snapshot.data!.length > 5 ? 5 : snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return liveMatchCard(snapshot.data![index]);
                       },

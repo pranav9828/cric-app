@@ -8,9 +8,9 @@ class MatchServices {
   BehaviorSubject<List<MatchModel>> list = BehaviorSubject<List<MatchModel>>();
   List<MatchModel> matchList = [];
 
-  Future<List<MatchModel>> getMatches() async {
+  Future<List<MatchModel>> getMatches(String date) async {
     try {
-      var nList = await fetchMatches();
+      var nList = await fetchMatches(date);
       matchList.addAll(nList);
       list.add(matchList);
       return nList;
@@ -20,12 +20,12 @@ class MatchServices {
     }
   }
 
-  Future<List<MatchModel>> fetchMatches() async {
+  Future<List<MatchModel>> fetchMatches(String date) async {
     var dio = Dio();
     dio.options.headers['x-rapidapi-key'] =
         '7f67623d5fmshbd6898214e6510ap13eddfjsne4c5b6090102';
     dio.options.headers['x-rapidapi-host'] = 'cricket-live-data.p.rapidapi.com';
-    final response = await dio.get(AppUrls.getMatches);
+    final response = await dio.get(AppUrls.getMatches + date);
     print(response.data);
     final body = response.data['results'] as List;
     return body.map((dynamic json) {

@@ -14,7 +14,10 @@ Widget liveMatchCard(MatchModel matchModel) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        showLiveBadge(matchModel),
+        Container(
+          margin: setMargin(10, 10, 0, 0),
+          child: liveBadge(),
+        ),
         Container(
           margin: setMargin(0, 15, 0, 0),
           alignment: Alignment.center,
@@ -49,27 +52,4 @@ Widget liveMatchCard(MatchModel matchModel) {
       ],
     ),
   );
-}
-
-Widget showLiveBadge(MatchModel matchModel) {
-  var temp = DateTime.now().toUtc();
-  var d1 = DateTime.utc(temp.year, temp.month, temp.day);
-  var d2 = DateTime.utc(
-      int.parse(matchModel.date.substring(0, 4)),
-      int.parse(matchModel.date.substring(5, 7)),
-      int.parse(matchModel.date.substring(8, 10)));
-
-  var d3 = DateTime.utc(temp.hour, temp.minute, temp.second);
-  var d4 = DateTime.utc(
-      int.parse(matchModel.date.substring(11, 13)),
-      int.parse(matchModel.date.substring(14, 16)),
-      int.parse(matchModel.date.substring(17, 19)));
-  if (d2.compareTo(d1) == 0 && d3.compareTo(d4) == 0) {
-    return Container(
-      margin: setMargin(10, 10, 0, 0),
-      child: liveBadge(),
-    );
-  } else {
-    return Container();
-  }
 }
