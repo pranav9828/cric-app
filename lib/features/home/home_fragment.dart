@@ -41,7 +41,7 @@ class _HomeFragmentState extends State<HomeFragment> {
               setState(() {
                 var todayDate = today.toString().substring(0, 10);
                 matchServices.getMatches(todayDate);
-                newsService.getNews(todayDate);
+                newsService.refresh(todayDate);
               });
               showSnackBar(context);
             },

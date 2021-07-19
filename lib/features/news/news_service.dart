@@ -31,12 +31,12 @@ class NewsService {
     final body = response.data['articles'] as List;
     return body.map((dynamic json) {
       return NewsModel(
-        source: json['source']['name'] as String,
-        title: json['title'] as String,
-        description: json['description'] as String,
-        url: json['url'] as String,
-        urlImage: json['urlToImage'] as String,
-        publishedAt: json['publishedAt'] as String,
+        source: json['source']['name'] as String?,
+        title: json['title'] as String?,
+        description: json['description'] as String?,
+        url: json['url'] as String?,
+        urlImage: json['urlToImage'] as String?,
+        publishedAt: json['publishedAt'] as String?,
       );
     }).toList();
   }

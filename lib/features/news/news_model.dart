@@ -8,10 +8,10 @@ class NewsModel {
     required this.publishedAt,
   });
 
-  final String source;
-  final String title;
-  final String description;
-  final String url;
-  final String urlImage;
-  final String publishedAt;
+  final String? source;
+  final String? title;
+  final String? description;
+  final String? url;
+  final String? urlImage;
+  final String? publishedAt;
 }

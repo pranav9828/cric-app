@@ -36,6 +36,7 @@ dependencies:
   jiffy: ^4.1.0
   webview_flutter: ^2.0.9
   pull_to_refresh: ^2.0.0
+  better_player: ^0.0.72
   
 dev_dependencies:
   flutter_test:

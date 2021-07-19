@@ -17,7 +17,7 @@ Widget newsCard(BuildContext context, NewsModel newsModel) {
       children: [
         Container(
           margin: setMargin(10, 10, 10, 0),
-          child: text(newsModel.title, Colors.white, FontWeight.w600, 17),
+          child: text(newsModel.title!, Colors.white, FontWeight.w600, 17),
         ),
         Container(
           margin: setMargin(10, 5, 0, 0),
@@ -35,20 +35,30 @@ Widget newsCard(BuildContext context, NewsModel newsModel) {
             ],
           ),
         ),
-        Container(
-          margin: setMargin(10, 10, 10, 10),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: imageView(newsModel.urlImage),
-          ),
-        ),
+        // ignore: unnecessary_null_comparison
+        newsModel.urlImage == null
+            ? Container(
+                margin: setMargin(10, 10, 10, 10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: imageView(
+                      'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png'),
+                ),
+              )
+            : Container(
+                margin: setMargin(10, 10, 10, 10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: imageView(newsModel.urlImage!),
+                ),
+              ),
       ],
     ),
   );
 }
 
 Widget showTime(NewsModel newsModel) {
-  var createdDateTime = DateTime.parse(newsModel.publishedAt);
+  var createdDateTime = DateTime.parse(newsModel.publishedAt!);
   var localTime = createdDateTime.toLocal();
   var timeAgo = Jiffy(localTime).fromNow(); // a year ago
   return text(timeAgo, Colors.white38, FontWeight.w600, 14);

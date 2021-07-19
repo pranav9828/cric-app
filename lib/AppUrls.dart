@@ -5,4 +5,7 @@ class AppUrls {
 
   static var getMatchDetails =
       'https://cricket-live-data.p.rapidapi.com/match/';
+
+  static var getCricketVideos =
+      'https://cric-app.000webhostapp.com/cricappapis/api/getCricketVideos.php';
 }

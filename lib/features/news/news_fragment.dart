@@ -49,7 +49,7 @@ class _NewsFragmentState extends State<NewsFragment> {
                   () {
                     setState(() {
                       var todayDate = todayDateTime.toString().substring(0, 10);
-                      newsService.getNews(todayDate);
+                      newsService.refresh(todayDate);
                     });
 
                     // showing snackbar
@@ -67,7 +67,7 @@ class _NewsFragmentState extends State<NewsFragment> {
                   return GestureDetector(
                     onTap: () {
                       sendToScreen(
-                          context, NewsDetail(snapshot.data![index].url));
+                          context, NewsDetail(snapshot.data![index].url!));
                     },
                     child: newsCard(context, snapshot.data![index]),
                   );
